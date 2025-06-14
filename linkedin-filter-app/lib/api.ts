@@ -5,18 +5,18 @@ export interface SuggestionItem {
   name: string;
 }
 
-// Define the expected API response structure
+
 interface ApiResponse {
   filters: SuggestionItem[];
 }
 
-// Base URL from .env.local
+
 const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 
-// API endpoints
+
 const endpoints: Record<string, string> = {
   companyType: '/filter_company_type',
-  // Add more endpoints if needed
+  
 };
 
 // Request headers
@@ -30,7 +30,7 @@ export async function fetchSuggestions(type: string, query: string): Promise<Sug
   try {
     const response = await axios.post<ApiResponse>(
       `${baseURL}${endpoints[type]}`,
-      { cookies: [] }, // request body required by the API
+      { cookies: [] }, 
       {
         headers,
         params: { query },
